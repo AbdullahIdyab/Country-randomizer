@@ -45,6 +45,8 @@ slices = 360 / temp
 
 pygame.font.init()
 font = pygame.font.SysFont(None, 48)
+small_font = pygame.font.SysFont(None, 32)
+really_small_font = pygame.font.SysFont(None, 20)
 
 running = True
 while running:
@@ -54,11 +56,12 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RETURN:
-                Wgt = random.randrange(20, 40)
-            elif event.key == pygame.K_SPACE:
-                countries = get_new_board()
+        if Wgt == 0:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    Wgt = random.randrange(20, 40)
+                elif event.key == pygame.K_SPACE:
+                    countries = get_new_board()
 
     if Wgt > 0:
         Ang = (Ang + Wgt) % 360
@@ -87,9 +90,7 @@ while running:
     legend_start_y = 50
     legend_x = 20
 
-    small_font = pygame.font.SysFont(None, 32)
-    really_small_font = pygame.font.SysFont(None, 20)
-    space = really_small_font.render("Spsce bar to randomize countries", True, (0, 0 ,0))
+    space = really_small_font.render("Space bar to randomize countries", True, (0, 0 ,0))
     enter = really_small_font.render("Enter key to spin the wheel", True, (0, 0, 0))
     screen.blit(space, (575, 50))
     screen.blit(enter, (575, 75))
