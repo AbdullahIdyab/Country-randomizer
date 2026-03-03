@@ -4,7 +4,7 @@ def get_countries():
     url = "https://restcountries.com/v3.1/all?fields=name,unMember" 
     #print("Pinging the API...")
     response = requests.get(url)
-    force_add = ["Palestine", "Vatican City", "Taiwan"]
+    force_add = ["Palestine", "Vatican City"]
     force_remove = ["Israel"]
     
     if response.status_code == 200:
